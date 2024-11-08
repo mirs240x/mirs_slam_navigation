@@ -21,7 +21,15 @@ def generate_launch_description():
         package='tf2_ros',
         executable='static_transform_publisher',
         output='screen',
-        parameters=['0 0 0.35 1.57 0 0 base_link laser']
+        parameters=[
+                {'frame_id': 'base_link'},
+                {'child_frame_id': 'laser'},
+                {'x': 0.0},
+                {'y': 0.0},
+                {'z': 0.35},
+                {'yaw': 1.57},
+                {'pitch': 0.0},
+                {'roll': 0.0},]
     )
 
     sllidar_launch = IncludeLaunchDescription(
