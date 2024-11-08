@@ -1,2 +1,2 @@
-# mris_mg5_slam_navigation_ros2
+# mris_slam_navigation
 mirs_mg5のslam,navigationに関するパッケージ
