@@ -21,15 +21,16 @@ def generate_launch_description():
         package='tf2_ros',
         executable='static_transform_publisher',
         output='screen',
-        parameters=[
-                {'frame_id': 'base_link'},
-                {'child_frame_id': 'laser'},
-                {'x': 0.0},
-                {'y': 0.0},
-                {'z': 0.35},
-                {'yaw': 1.57},
-                {'pitch': 0.0},
-                {'roll': 0.0},]
+        arguments=[
+                '--frame-id', 'base_link',  # 親フレーム
+                '--child-frame-id', 'laser',  # 子フレーム
+                '--x', '0.0',                # 位置のX成分
+                '--y', '0.0',                # 位置のY成分
+                '--z', '0.35',                # 位置のZ成分
+                '--yaw', '1.570796',              # 回転角（ヨー）
+                '--pitch', '0.0',            # 回転角（ピッチ）
+                '--roll', '0.0'              # 回転角（ロール）
+                ]
     )
 
     sllidar_launch = IncludeLaunchDescription(
