@@ -17,6 +17,21 @@ def generate_launch_description():
         description='Set lidar usb port.')
 
     # Launch files and Nodes #
+    sllidar_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('sllidar_ros2'), 'launch', 'sllidar_s1_launch.py')
+        ),
+        launch_arguments={'serial_port': LaunchConfiguration('lidar_port')}.items()
+    )
+
+#        PythonLaunchDescriptionSource([os.path.join(
+#            get_package_share_directory('sllidar_ros2'),
+#            'launch'),
+#            '/sllidar_s1_launch.py']),
+#        launch_arguments={'serial_port': lidar_port}.items(),
+#        condition=LaunchConfigurationEquals('lidar', 'sllidar')
+#    )
+
     tf2_ros_node = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
@@ -33,14 +48,7 @@ def generate_launch_description():
                 ]
     )
 
-    sllidar_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('sllidar_ros2'),
-            'launch'),
-            '/sllidar_s1_launch.py']),
-        launch_arguments={'serial_port': lidar_port}.items(),
-        condition=LaunchConfigurationEquals('lidar', 'sllidar')
-    )
+    
 
     ld = LaunchDescription()
     ld.add_action(lidar_port)
