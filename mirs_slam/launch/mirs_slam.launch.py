@@ -36,16 +36,7 @@ def generate_launch_description():
         package='tf2_ros',
         executable='static_transform_publisher',
         output='screen',
-        arguments=[
-                '--frame-id', 'base_link',  # 親フレーム
-                '--child-frame-id', 'laser',  # 子フレーム
-                '--x', '0.0',                # 位置のX成分
-                '--y', '0.0',                # 位置のY成分
-                '--z', '0.35',                # 位置のZ成分
-                '--yaw', '1.570796',              # 回転角（ヨー）
-                '--pitch', '0.0',            # 回転角（ピッチ）
-                '--roll', '0.0'              # 回転角（ロール）
-                ]
+        arguments=["0", "0", "0", "0", "0", "0", "base_link", "laser"]
     )
 
     
@@ -53,7 +44,7 @@ def generate_launch_description():
     ld = LaunchDescription()
     ld.add_action(lidar_port)
 
-    ld.add_action(sllidar_launch)
+    #ld.add_action(sllidar_launch)
     ld.add_action(tf2_ros_node)
 
     return ld
