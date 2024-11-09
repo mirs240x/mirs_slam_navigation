@@ -44,7 +44,7 @@ def generate_launch_description():
     ld = LaunchDescription()
     ld.add_action(lidar_port)
 
-    #ld.add_action(sllidar_launch)
+    ld.add_action(sllidar_launch)
     ld.add_action(tf2_ros_node)
 
     return ld
